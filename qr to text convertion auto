@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QR Scanner</title>
+<script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+
+<body>
+
+<h2>Scan QR Code</h2>
+
+<div id="reader" style="width:300px;"></div>
+
+<br>
+
+Text from QR:
+<input type="text" id="qrtext">
+
+<script>
+
+function onScanSuccess(decodedText, decodedResult) {
+    document.getElementById("qrtext").value = decodedText;
+}
+
+let scanner = new Html5QrcodeScanner(
+    "reader",
+    { fps: 10, qrbox: 250 }
+);
+
+scanner.render(onScanSuccess);
+
+</script>
+
+</body>
+</html>
